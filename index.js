@@ -14,20 +14,29 @@ const deviceSchema = new mongoose.Schema({
 });
 
 const Device = mongoose.model('Device', deviceSchema);
+//
+// async function createDevice() {
+// 	const sensor1 = new Device({
+// 		primaryKey: { leadingKey: 1, secondaryKey: 2 },
+// 		name: 'Sensor1',
+// 		type: 'Sensor'
+// 	});
+//
+// 	const result = await sensor1.save();
+// 	console.log(result);
+// }
+//
+// createDevice();
 
-async function createDevice() {
-	const sensor1 = new Device({
-		primaryKey: { leadingKey: 1, secondaryKey: 2 },
-		name: 'Sensor1',
-		type: 'Sensor'
-	});
 
-	const result = await sensor1.save();
-	console.log(result);
+async function getDevices() {
+	const devices = await Device.find()
+		.sort({ name: 1 })
+		.select({ name: 1, type: 1});
+	console.log(devices);
 }
 
-createDevice();
-
+getDevices();
 //
 // async function createUser(username) {
 // 	return new User({
