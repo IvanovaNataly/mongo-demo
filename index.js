@@ -30,9 +30,9 @@ const Device = mongoose.model('Device', deviceSchema);
 
 
 async function getDevices() {
-	const devices = await Device.find()
-		.sort({ name: 1 })
-		.select({ name: 1, type: 1});
+	const devices = await Device.find();
+		// .sort({ name: 1 })
+		// .select({ name: 1, type: 1});
 	console.log(devices);
 }
 
